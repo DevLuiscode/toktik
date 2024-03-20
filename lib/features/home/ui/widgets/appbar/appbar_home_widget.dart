@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:toktik/ui/providers/appbar/app_bar_provider.dart';
+import 'package:toktik/features/home/ui/providers/appbar/app_bar_provider.dart';
 
 class AppbarHomeWidget extends ConsumerStatefulWidget
     implements PreferredSizeWidget {

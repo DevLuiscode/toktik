@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:toktik/ui/providers/appbar/app_bar_provider.dart';
-
-import 'package:toktik/ui/widgets/widgets.dart';
+import 'package:toktik/features/home/ui/home/page/screens.dart';
+import 'package:toktik/features/home/ui/providers/appbar/app_bar_provider.dart';
+import 'package:toktik/features/home/ui/widgets/widgets.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   static const name = "home_screen";
@@ -21,6 +21,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
     final doIndicatorProvide = ref.watch(doIndicatorPage);
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           PageView(
@@ -31,33 +32,41 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
             },
             children: [
               Container(
-                color: Colors.amber,
+                color: Colors.yellow,
+                child: GestureDetector(
+                  onHorizontalDragUpdate: (details) {
+                    if (details.primaryDelta! < -30) {
+                      appBarNotifier.setPage(1);
+                    }
+                  },
+                  child: const FollowingScreen(),
+                ),
               ),
               Container(
                 color: Colors.pink,
                 child: GestureDetector(
                   onHorizontalDragUpdate: (details) {
-                    if (details.primaryDelta! > 1) {
+                    if (details.primaryDelta! > 30) {
                       appBarNotifier.setPage(0);
                     }
-                    if (details.primaryDelta! < -1) {
+                    if (details.primaryDelta! < -30) {
                       appBarNotifier.setPage(2);
                     }
                   },
-                  child: PageView.builder(
-                    itemCount: 10,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, verticalIndex) {
-                      return Container(
-                        color: Colors.primaries[verticalIndex],
-                      );
-                    },
-                  ),
+                  child: const ForyouScreen(),
                 ),
               ),
               Container(
-                color: Colors.indigo,
-              )
+                color: Colors.white,
+                child: GestureDetector(
+                  onHorizontalDragUpdate: (details) {
+                    if (details.primaryDelta! > 30) {
+                      appBarNotifier.setPage(1);
+                    }
+                  },
+                  child: const OtherProfileScreen(),
+                ),
+              ),
             ],
           ),
           Positioned(
@@ -70,6 +79,8 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ],
       ),
+      bottomNavigationBar:
+          doIndicatorProvide <= 1 ? const NavigationBarWidget() : null,
     );
   }
 }

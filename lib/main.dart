@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:toktik/config/routes/app_routes.dart';
+import 'package:toktik/main/main.dart';
 
 void main() {
   runApp(
@@ -8,15 +8,4 @@ void main() {
       child: MainApp(),
     ),
   );
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: appRoutes,
-    );
-  }
 }
