@@ -27,6 +27,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
           PageView(
             controller: appBarProvide,
             scrollDirection: Axis.horizontal,
+            physics: const NeverScrollableScrollPhysics(),
             onPageChanged: (index) {
               doIndicatorNotifier.update((state) => index);
             },
@@ -35,7 +36,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                 color: Colors.yellow,
                 child: GestureDetector(
                   onHorizontalDragUpdate: (details) {
-                    if (details.primaryDelta! < -30) {
+                    if (details.primaryDelta! < -20) {
                       appBarNotifier.setPage(1);
                     }
                   },
@@ -46,10 +47,10 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                 color: Colors.pink,
                 child: GestureDetector(
                   onHorizontalDragUpdate: (details) {
-                    if (details.primaryDelta! > 30) {
+                    if (details.primaryDelta! > 20) {
                       appBarNotifier.setPage(0);
                     }
-                    if (details.primaryDelta! < -30) {
+                    if (details.primaryDelta! < -20) {
                       appBarNotifier.setPage(2);
                     }
                   },
@@ -60,7 +61,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                 color: Colors.white,
                 child: GestureDetector(
                   onHorizontalDragUpdate: (details) {
-                    if (details.primaryDelta! > 30) {
+                    if (details.primaryDelta! > 20) {
                       appBarNotifier.setPage(1);
                     }
                   },

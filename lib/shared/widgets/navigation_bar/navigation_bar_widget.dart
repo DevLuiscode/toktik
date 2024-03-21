@@ -17,10 +17,11 @@ class NavigationBarWidget extends StatelessWidget {
         right: false,
         child: Container(
           color: Colors.black,
-          height: 80,
+          height: 55,
+          padding: const EdgeInsets.symmetric(vertical: 2),
           width: double.infinity,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ...List.generate(
                 navgationBarList.length,
@@ -33,7 +34,7 @@ class NavigationBarWidget extends StatelessWidget {
                           ? Stack(
                               children: [
                                 Container(
-                                  height: 35,
+                                  height: 30,
                                   width: 50,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
@@ -69,22 +70,17 @@ class NavigationBarWidget extends StatelessWidget {
                                 )
                               ],
                             )
-                          : IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                item.icon,
-                                size: 28,
-                                color: item.isSelected
-                                    ? Colors.white
-                                    : Colors.grey,
-                              ),
+                          : Icon(
+                              item.icon,
+                              size: 20,
+                              color:
+                                  item.isSelected ? Colors.white : Colors.grey,
                             ),
                       Text(
                         item.name != null ? item.name! : "",
                         style: TextStyle(
-                          color: item.isSelected ? Colors.white : Colors.grey,
-                          // fontSize: index == 3 ? 13 : 15,
-                        ),
+                            color: item.isSelected ? Colors.white : Colors.grey,
+                            fontSize: 13),
                       )
                     ],
                   );
