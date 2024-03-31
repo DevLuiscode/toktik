@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
+
 import 'package:iconsax/iconsax.dart';
 
 class FloatingActionsButtonWidget extends StatelessWidget {
   const FloatingActionsButtonWidget({
     super.key,
+    this.imagePath = '',
   });
+
+  final String? imagePath;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        const SizedBox(
+        SizedBox(
           height: 70,
           width: 50,
           child: Stack(
             children: [
               CircleAvatar(
                 radius: 30,
+                backgroundImage:
+                    imagePath!.isNotEmpty ? NetworkImage(imagePath!) : null,
               ),
-              Positioned(
+              const Positioned(
                 bottom: 5,
                 left: 0,
                 right: 0,

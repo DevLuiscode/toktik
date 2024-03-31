@@ -44,7 +44,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
               Container(
-                color: Colors.pink,
+                color: Colors.black,
                 child: GestureDetector(
                   onHorizontalDragUpdate: (details) {
                     if (details.primaryDelta! > 20) {
